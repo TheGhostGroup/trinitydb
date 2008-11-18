@@ -41500,7 +41500,7 @@ UPDATE `creature_template` SET
 WHERE `entry` = '18613';
 
 
---Seductress
+-- Seductress
 UPDATE `creature_template` SET
 `minlevel` = '70',
 `maxlevel` = '70',
@@ -41520,7 +41520,7 @@ UPDATE `creature_template` SET
 WHERE `entry` = '18614';
 
 
---Shadowmoon Adept
+-- Shadowmoon Adept
 UPDATE `creature_template` SET
 `minlevel` = '69',
 `maxlevel` = '70',
