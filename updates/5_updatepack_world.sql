@@ -43311,5 +43311,5 @@ UPDATE `creature_movement` SET text3=NULL WHERE text3='';
 UPDATE `creature_movement` SET text4=NULL WHERE text4='';
 UPDATE `creature_movement` SET text5=NULL WHERE text5='';
 DELETE FROM `db_version`;
-INSERT IGNORE INTO `db_version` VALUES ('TDB 0.0.1 (4) for Trinity rev. 248');
+INSERT IGNORE INTO `db_version` VALUES ('TDB 0.0.1 (5) for Trinity rev. 250');
 -- END
