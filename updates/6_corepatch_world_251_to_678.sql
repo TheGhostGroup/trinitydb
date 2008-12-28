@@ -991,7 +991,8 @@ UPDATE `gameobject_template` SET `ScriptName`='go_door_lever_dm' WHERE `entry`=1
 UPDATE `gameobject_template` SET `ScriptName`='go_main_chambers_access_panel' WHERE `entry` IN (184125,184126);
 UPDATE `creature_template` SET `ScriptName`='npc_twiggy_flathead' WHERE `entry`=6248;
 DELETE FROM `areatrigger_scripts` WHERE `entry`=522;
-INSERT INTO `areatrigger_scripts` VALUES (522,'at_twiggy_flathead');DELETE FROM `script_texts` WHERE `entry` BETWEEN -1565019 AND -1565000;
+INSERT INTO `areatrigger_scripts` VALUES (522,'at_twiggy_flathead');
+DELETE FROM `script_texts` WHERE `entry` BETWEEN -1565019 AND -1565000;
 
 -- text
 INSERT INTO `script_texts` (`entry`,`content_default`,`sound`,`type`,`language`,`comment`) VALUES
