@@ -2136,7 +2136,7 @@ insert into event_scripts values
 delete from creature where id = 17651;
 -- add script
 update creature_template set scriptname = 'npc_image_of_medivh' where entry = 17651;
---640 
+-- 640 
 DELETE FROM `spell_script_target` WHERE entry IN (33655, 33633, 44374);
 INSERT INTO `spell_script_target` VALUES
 (33655,0,183350),
