@@ -254,7 +254,7 @@ ALTER TABLE creature_template ADD COLUMN spell8 mediumint(8) unsigned NOT NULL d
 ALTER TABLE creature_template ADD COLUMN VehicleId mediumint(8) unsigned NOT NULL DEFAULT '0' AFTER PetSpellDataId;
 ALTER TABLE game_event ADD COLUMN world_event tinyint(3) unsigned NOT NULL default '0' COMMENT '0 if normal event, 1 if world event' AFTER description;
 ALTER TABLE instance_template ADD COLUMN access_id bigint(20) unsigned NOT NULL DEFAULT '0' AFTER reset_delay;
-ALTER TABLE npc_spellclick_spells ADD COLUMN quest_status int(11) unsigned NOT NULL DEFAULT '3' COMMENT 'Quest status: 3 incompleted, 1 completed/rewarded';
+ALTER TABLE npc_spellclick_spells ADD COLUMN quest_status int(11) unsigned NOT NULL DEFAULT '3' COMMENT 'Quest status: 3 incompleted, 1 completed/rewarded' AFTER quest_id;
 ALTER TABLE pool_creature ADD COLUMN comment VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER chance;
 ALTER TABLE pool_template ADD COLUMN comment VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER max_limit;
 
@@ -377,6 +377,7 @@ INSERT INTO `creature_template_temp` (`entry`, `spell5`, `spell6`, `spell7`, `sp
 ('32629','0','0','0','0','116');
 -- *** END OF INSERT SPELL5 - SPELL8 DUMP HERE ***
 UPDATE `creature_template`, `creature_template_temp` SET `creature_template`.`spell5`=`creature_template_temp`.`spell5`, `creature_template`.`spell6`=`creature_template_temp`.`spell6`, `creature_template`.`spell7`=`creature_template_temp`.`spell7`, `creature_template`.`spell8`=`creature_template_temp`.`spell8`, `creature_template`.`VehicleId`=`creature_template_temp`.`VehicleId` WHERE `creature_template`.`entry`=`creature_template_temp`.`entry`;
+UPDATE creature_template SET AIname = 'OutdoorPvPObjectiveAI' WHERE entry = 12999;
 DROP TABLE IF EXISTS `creature_template_temp`;
 
 -- game_event (TC2 3479 DUMP)
