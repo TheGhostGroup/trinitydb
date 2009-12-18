@@ -31750,5 +31750,5 @@ DELETE FROM `creature_onkill_reputation` WHERE `creature_id` NOT IN (SELECT `ent
 UPDATE `creature_template` SET `npcflag`=`npcflag`|2 WHERE `entry` IN (SELECT `id` FROM `creature_questrelation` UNION SELECT `id` FROM `creature_involvedrelation`);
 DELETE FROM `version`;
 INSERT INTO `version` (`core_version`, `core_revision`, `db_version`, `script_version`) VALUES
-('Trinity Core 2', '6376', 'TDB 0.0.5 (20)', 'ACID 3.0.1');
+('Trinity Core 2', '6376', 'TDB 0.0.5 (21)', 'ACID 3.0.1');
 -- END
