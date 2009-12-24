@@ -15,25 +15,26 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
---
--- Table structure for table `realmd_db_version`
---
+-- 
+-- Structure for table `account_access`
+-- 
 
-DROP TABLE IF EXISTS `realmd_db_version`;
-CREATE TABLE `realmd_db_version` (
-  `required_8332_01_realmd_realmcharacters` bit(1) default NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='Last applied sql update to DB';
+DROP TABLE IF EXISTS `account_access`;
+CREATE TABLE `account_access` (
+  `id` int(11) unsigned NOT NULL,
+  `gmlevel` tinyint(3) unsigned NOT NULL,
+  `RealmID` int(11) NOT NULL,
+  PRIMARY KEY  (`id`,`RealmID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
---
--- Dumping data for table `realmd_db_version`
---
+-- 
+-- Content for table `account_access`
+-- 
 
-LOCK TABLES `realmd_db_version` WRITE;
-/*!40000 ALTER TABLE `realmd_db_version` DISABLE KEYS */;
-INSERT INTO `realmd_db_version` VALUES
-(NULL);
-/*!40000 ALTER TABLE `realmd_db_version` ENABLE KEYS */;
-UNLOCK TABLES;
+/*INSERT INTO `account_access` (`id`, `gmlevel`, `RealmID`) VALUES 
+(1, 3, -1),
+(2, 2, -1),
+(3, 1, -1);*/
 
 --
 -- Table structure for table `account`
@@ -44,7 +45,6 @@ CREATE TABLE `account` (
   `id` int(11) unsigned NOT NULL auto_increment COMMENT 'Identifier',
   `username`      varchar(32) NOT NULL default '',
   `sha_pass_hash` varchar(40) NOT NULL default '',
-  `gmlevel` tinyint(3) unsigned NOT NULL default '0',
   `sessionkey` longtext,
   `v` longtext,
   `s` longtext,
@@ -59,8 +59,7 @@ CREATE TABLE `account` (
   `mutetime` bigint(40) unsigned NOT NULL default '0',
   `locale` tinyint(3) unsigned NOT NULL default '0',
   PRIMARY KEY  (`id`),
-  UNIQUE KEY `idx_username` (`username`),
-  KEY `idx_gmlevel` (`gmlevel`)
+  UNIQUE KEY `idx_username` (`username`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=DYNAMIC COMMENT='Account System';
 
 --
@@ -70,10 +69,10 @@ CREATE TABLE `account` (
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
 /*INSERT INTO `account` VALUES
-(1,'ADMINISTRATOR','a34b29541b87b7e4823683ce6c7bf6ae68beaaac',3,'','0','0','','2006-04-25 10:18:56','127.0.0.1',0,0,'0000-00-00 00:00:00',0,0,0,0),
-(2,'GAMEMASTER','7841e21831d7c6bc0b57fbe7151eb82bd65ea1f9',2,'','0','0','','2006-04-25 10:18:56','127.0.0.1',0,0,'0000-00-00 00:00:00',0,0,0,0),
-(3,'MODERATOR','a7f5fbff0b4eec2d6b6e78e38e8312e64d700008',1,'','0','0','','2006-04-25 10:19:35','127.0.0.1',0,0,'0000-00-00 00:00:00',0,0,0,0),
-(4,'PLAYER','3ce8a96d17c5ae88a30681024e86279f1a38c041',0,'','0','0','','2006-04-25 10:19:35','127.0.0.1',0,0,'0000-00-00 00:00:00',0,0,0,0);*/
+(1,'ADMINISTRATOR','a34b29541b87b7e4823683ce6c7bf6ae68beaaac',','0','0','','2006-04-25 10:18:56','127.0.0.1',0,0,'0000-00-00 00:00:00',0,0,0,0),
+(2,'GAMEMASTER','7841e21831d7c6bc0b57fbe7151eb82bd65ea1f9',','0','0','','2006-04-25 10:18:56','127.0.0.1',0,0,'0000-00-00 00:00:00',0,0,0,0),
+(3,'MODERATOR','a7f5fbff0b4eec2d6b6e78e38e8312e64d700008',','0','0','','2006-04-25 10:19:35','127.0.0.1',0,0,'0000-00-00 00:00:00',0,0,0,0),
+(4,'PLAYER','3ce8a96d17c5ae88a30681024e86279f1a38c041','','0','0','','2006-04-25 10:19:35','127.0.0.1',0,0,'0000-00-00 00:00:00',0,0,0,0);*/
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -182,6 +181,7 @@ CREATE TABLE `realmlist` (
   `timezone` tinyint(3) unsigned NOT NULL default '0',
   `allowedSecurityLevel` tinyint(3) unsigned NOT NULL default '0',
   `population` float unsigned NOT NULL default '0',
+  `gamebuild` int(11) unsigned NOT NULL default '10505',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `idx_name` (`name`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Realm System';
@@ -193,7 +193,7 @@ CREATE TABLE `realmlist` (
 LOCK TABLES `realmlist` WRITE;
 /*!40000 ALTER TABLE `realmlist` DISABLE KEYS */;
 INSERT INTO `realmlist` VALUES
-(1,'Trinity','127.0.0.1',8085,1,0,1,0,0);
+(1,'Trinity','127.0.0.1',8085,1,0,1,0,0, 10505);
 /*!40000 ALTER TABLE `realmlist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -208,6 +208,7 @@ CREATE TABLE `uptime` (
   `startstring` varchar(64) NOT NULL default '',
   `uptime` bigint(20) unsigned NOT NULL default '0',
   `maxplayers` smallint(5) unsigned NOT NULL default '0',
+  `revision` VARCHAR(255) NOT NULL DEFAULT 'Trinitycore',
   PRIMARY KEY  (`realmid`,`starttime`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Uptime system';
 
