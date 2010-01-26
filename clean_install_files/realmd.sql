@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: realmd
 -- ------------------------------------------------------
--- Server version	5.0.45-Debian_1ubuntu3.1-log
+-- Server version       5.0.45-Debian_1ubuntu3.1-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -15,9 +15,9 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- 
+--
 -- Structure for table `account_access`
--- 
+--
 
 DROP TABLE IF EXISTS `account_access`;
 CREATE TABLE `account_access` (
@@ -27,11 +27,11 @@ CREATE TABLE `account_access` (
   PRIMARY KEY  (`id`,`RealmID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
--- 
+--
 -- Content for table `account_access`
--- 
+--
 
-/*INSERT INTO `account_access` (`id`, `gmlevel`, `RealmID`) VALUES 
+/*INSERT INTO `account_access` (`id`, `gmlevel`, `RealmID`) VALUES
 (1, 3, -1),
 (2, 2, -1),
 (3, 1, -1);*/
@@ -230,4 +230,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2008-01-10 11:37:06
+-- Dump completed on 2010-01-24 13:35:00
