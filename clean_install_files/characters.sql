@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: characters
 -- ------------------------------------------------------
--- Server version	5.0.45-Debian_1ubuntu3.1-log
+-- Server version       5.0.45-Debian_1ubuntu3.1-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -57,6 +57,26 @@ CREATE TABLE `account_data` (
 LOCK TABLES `account_data` WRITE;
 /*!40000 ALTER TABLE `account_data` DISABLE KEYS */;
 /*!40000 ALTER TABLE `account_data` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `addons`
+--
+
+DROP TABLE IF EXISTS `addons`;
+CREATE TABLE `addons` (
+  `name` varchar(120) NOT NULL default '',
+  `crc` mediumint(32) unsigned NOT NULL default '0',
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Addons';
+
+--
+-- Dumping data for table `addons`
+--
+
+LOCK TABLES `addons` WRITE;
+/*!40000 ALTER TABLE `addons` DISABLE KEYS */;
+/*!40000 ALTER TABLE `addons` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -445,10 +465,14 @@ CREATE TABLE `character_aura` (
   `caster_guid` bigint(20) unsigned NOT NULL default '0' COMMENT 'Full Global Unique Identifier',
   `spell` int(11) unsigned NOT NULL default '0',
   `effect_mask` tinyint(3) unsigned NOT NULL default '0',
+  `recalculate_mask` tinyint(3) unsigned NOT NULL default '0',
   `stackcount` tinyint(3) unsigned NOT NULL default '1',
   `amount0` int(11) NOT NULL default '0',
   `amount1` int(11) NOT NULL default '0',
   `amount2` int(11) NOT NULL default '0',
+  `base_amount0` int(11) NOT NULL default '0',
+  `base_amount1` int(11) NOT NULL default '0',
+  `base_amount2` int(11) NOT NULL default '0',
   `maxduration` int(11) NOT NULL default '0',
   `remaintime` int(11) NOT NULL default '0',
   `remaincharges` tinyint(3) unsigned NOT NULL default '0',
@@ -1517,10 +1541,14 @@ CREATE TABLE `pet_aura` (
   `caster_guid` bigint(20) unsigned NOT NULL default '0' COMMENT 'Full Global Unique Identifier',
   `spell` int(11) unsigned NOT NULL default '0',
   `effect_mask` tinyint(3) unsigned NOT NULL default '0',
+  `recalculate_mask` tinyint(3) unsigned NOT NULL default '0',
   `stackcount` tinyint(3) unsigned NOT NULL default '1',
   `amount0` int(11) NOT NULL default '0',
   `amount1` int(11) NOT NULL default '0',
   `amount2` int(11) NOT NULL default '0',
+  `base_amount0` int(11) NOT NULL default '0',
+  `base_amount1` int(11) NOT NULL default '0',
+  `base_amount2` int(11) NOT NULL default '0',
   `maxduration` int(11) NOT NULL default '0',
   `remaintime` int(11) NOT NULL default '0',
   `remaincharges` tinyint(3) unsigned NOT NULL default '0',
@@ -1654,4 +1682,4 @@ UNLOCK TABLES;
 
 -- Dump completed on 2008-01-10 11:37:06
 
--- Updated on 2003-02-22 01:44:45
+-- Updated on 2010-01-24 01:33:00
