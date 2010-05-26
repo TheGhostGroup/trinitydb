@@ -36,7 +36,7 @@ UPDATE `mail` LEFT JOIN `item_text` ON `mail`.`itemtextid` = `item_text`.`id` SE
 DELETE item_text FROM mail, item_text WHERE mail.itemtextid = item_text.id;
 ALTER TABLE `mail` DROP COLUMN `itemtextid`;
 
--- 7893_characters_characters.sql
+-- 7893_characters_item_instance.sql
 UPDATE item_instance SET data = REPLACE(data,'  ',' ');
 UPDATE item_instance SET data = CONCAT(TRIM(data),' ');
 UPDATE `item_instance` SET `data` = CONCAT(
