@@ -10468,19 +10468,19 @@ UPDATE `areatrigger_teleport` SET `target_position_x` =3820.08081,`target_positi
 -- Fix Improved Land Mines (by Amit86)
 UPDATE `creature_template` SET `unit_flags`=`unit_flags`|4 WHERE `entry`=29475;
 
- -- Add eai for quest Test at Sea (11170) (by Amit86)
+-- Add eai for quest Test at Sea (11170) (by Amit86)
 UPDATE `creature_template` SET `AIName`= 'EventAI' WHERE `entry` IN (24120);
 DELETE FROM `creature_ai_scripts` WHERE `creature_id`=24120;
 INSERT INTO `creature_ai_scripts`(`id`,`creature_id`,`event_type`,`event_inverse_phase_mask`,`event_chance`,`event_flags`,`event_param1`,`event_param2`,`event_param3`,`event_param4`,`action1_type`,`action1_param1`,`action1_param2`,`action1_param3`,`action2_type`,`action2_param1`,`action2_param2`,`action2_param3`,`action3_type`,`action3_param1`,`action3_param2`,`action3_param3`,`comment`) values
-(2412091,24120,8,0,100,1,43115,-1,25000,25000, 33,24121,6,0, 0,0,0,0, 0,0,0,0, 'North Fleet Reservist Credit - q11170'),
-(2412092,24120,8,0,60,1,43115,-1,25000,25000, 1,-241201,-241202,-241204, 0,0,0,0, 0,0,0,0, 'North Fleet Reservist yell'),
-(2412093,24120,8,0,20,1,43115,-1,25000,25000, 1,-241203,-241203,-241203, 0,0,0,0, 0,0,0,0, 'North Fleet Reservist yell');
-DELETE FROM `creature_ai_texts` WHERE `entry` BETWEEN -241204 AND -241201;
+(2412001,24120,8,0,100,1,43115,-1,25000,25000, 33,24121,6,0, 0,0,0,0, 0,0,0,0, 'North Fleet Reservist Credit - q11170'),
+(2412002,24120,8,0,60,1,43115,-1,25000,25000, 1,-10001,-10002,-10003, 0,0,0,0, 0,0,0,0, 'North Fleet Reservist yell'),
+(2412003,24120,8,0,20,1,43115,-1,25000,25000, 1,-10004,-10005,-10005, 0,0,0,0, 0,0,0,0, 'North Fleet Reservist yell');
+DELETE FROM `creature_ai_texts` WHERE `entry` BETWEEN -10004 AND -10001;
 INSERT INTO `creature_ai_texts` (`entry`,`content_default`,`sound`,`type`,`language`,`emote`,`comment`) VALUES
-(-241201, 'I don''t feel so good...',0,1,0,0, 'North Fleet Reservist Yell'),
-(-241202, 'That liquid... it reeks!',0,1,0,0, 'North Fleet Reservist Yell'),
-(-241203, 'Someone shoot that bat down!',0,1,0,0, 'North Fleet Reservist Yell'),
-(-241204, 'Help! My eyes!', 0,1,0,0, 'North Fleet Reservist Yell');
+(-10001, 'I don''t feel so good...',0,1,0,0, 'North Fleet Reservist Yell'),
+(-10002, 'That liquid... it reeks!',0,1,0,0, 'North Fleet Reservist Yell'),
+(-10003, 'Someone shoot that bat down!',0,1,0,0, 'North Fleet Reservist Yell'),
+(-10004, 'Help! My eyes!', 0,1,0,0, 'North Fleet Reservist Yell');
 -- North fleet reservists should not be moving (thx Malcrom)
 UPDATE `creature` SET `MovementType`=0, `spawndist`=0 WHERE `MovementType`=1 AND `id`=24120;
 
